@@ -22,6 +22,7 @@ gem 'devise'
 gem 'less-rails'
 gem 'therubyracer'
 gem 'simple_form'
+gem 'rails4-autocomplete'
 
 group :assets do
 end
@@ -30,6 +31,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'foreman'
+  gem 'meta_request'
   gem 'spring'
   gem 'spring-commands-rspec'
 end

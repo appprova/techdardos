@@ -3,7 +3,7 @@ class Game < ActiveRecord::Base
   belongs_to :challenger, class_name: "User"
 
   delegate :name, to: :challenger, prefix: true
-  delegate :name, to: :challenged, prefix: true
+  delegate :name, to: :challenged, prefix: true, allow_nil: true
 
   validates :challenger, presence: true
   validates :challenged, presence: true

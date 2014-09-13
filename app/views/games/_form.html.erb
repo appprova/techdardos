@@ -1,12 +1,11 @@
-<%= simple_form_for(@game) do |f| %>
+<%= simple_form_for @game do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+    <%= f.input :challenged_name,
+      input_html: { data: { autocomplete_source: user_autocomplete_path } } %>
+    <%= f.input :challenged_id, as: :hidden %>
     <%= f.input :challenger_points %>
     <%= f.input :challenged_points %>
-  </div>
-
-  <div class="actions">
-    <%= f.button :submit %>
-  </div>
+    <hr>
+    <%= f.button :submit, class: "btn btn-success" %> or <%= link_to "Cancel", games_path %>
 <% end %>

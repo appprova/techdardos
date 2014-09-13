@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_game, only: [:show, :edit, :update, :destroy]
 
   # GET /games
@@ -22,6 +23,7 @@ class GamesController < ApplicationController
   # POST /games
   def create
     @game = Game.new(game_params)
+    @game.challenger = current_user
 
     if @game.save
       redirect_to @game, notice: 'Game was successfully created.'
@@ -53,6 +55,6 @@ class GamesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def game_params
-      params[:game]
+      params[:game].except(:challenged_name).permit(:challenged_id, :challenged_points, :challenger_points)
     end
 end
